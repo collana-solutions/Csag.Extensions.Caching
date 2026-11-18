@@ -1,6 +1,6 @@
 # Changesets in this repo (NuGet edition)
 
-This guide explains how versioning and releases work in `Neolution.Extensions.Caching`. It is the .NET-flavoured counterpart of the org's canonical [Changesets Guide](https://github.com/neolution-ch/changeset-test/blob/main/docs/CHANGESETS.md). Read the canonical doc for the underlying mental model and rare scenarios (prereleases, backports, recovery). Read this doc for the specifics of working with a NuGet-only project.
+This guide explains how versioning and releases work in `Neolution.Extensions.Caching`. It is the .NET-flavoured counterpart of the org's canonical [Changesets Guide](https://github.com/collana-solutions/changeset-test/blob/main/docs/CHANGESETS.md). Read the canonical doc for the underlying mental model and rare scenarios (prereleases, backports, recovery). Read this doc for the specifics of working with a NuGet-only project.
 
 ## Table of contents
 
@@ -202,7 +202,7 @@ Example, starting at `2.1.1`:
 
 ### Prereleases / release candidates
 
-Use only for major releases. See the canonical doc's [Prereleases section](https://github.com/neolution-ch/changeset-test/blob/main/docs/CHANGESETS.md#prereleases--release-candidates) for the full walkthrough. nuget.org accepts SemVer 2.0 prerelease suffixes (`3.0.0-beta.0`, `3.0.0-rc.1`) natively, so the npm-flavoured commands in the canonical doc work as-is:
+Use only for major releases. See the canonical doc's [Prereleases section](https://github.com/collana-solutions/changeset-test/blob/main/docs/CHANGESETS.md#prereleases--release-candidates) for the full walkthrough. nuget.org accepts SemVer 2.0 prerelease suffixes (`3.0.0-beta.0`, `3.0.0-rc.1`) natively, so the npm-flavoured commands in the canonical doc work as-is:
 
 ```bash
 git checkout -b chore/enter-beta
@@ -225,7 +225,7 @@ Changesets CLI 2 kept the shipped changesets in `.changeset/` and listed them in
 
 ### Backporting on `release/vX.x` branches
 
-When `main` has moved on to a new major (e.g. v3) but a fix is needed for the old major (v2), use a `release/v2.x` branch. The Release workflow auto-creates `release/v(N-1).x` whenever a new major is published from `main` — see `scripts:` block in `release.yml`. For all other cases (manually creating it retroactively, when to use it, what a backport PR looks like), follow the [Backporting section of the canonical doc](https://github.com/neolution-ch/changeset-test/blob/main/docs/CHANGESETS.md#backporting--hotfixes-on-older-versions) — both `ci.yml` and `release.yml` already trigger on `release/**`.
+When `main` has moved on to a new major (e.g. v3) but a fix is needed for the old major (v2), use a `release/v2.x` branch. The Release workflow auto-creates `release/v(N-1).x` whenever a new major is published from `main` — see `scripts:` block in `release.yml`. For all other cases (manually creating it retroactively, when to use it, what a backport PR looks like), follow the [Backporting section of the canonical doc](https://github.com/collana-solutions/changeset-test/blob/main/docs/CHANGESETS.md#backporting--hotfixes-on-older-versions) — both `ci.yml` and `release.yml` already trigger on `release/**`.
 
 > **nuget.org has no dist-tags.** The canonical doc's `--tag release-v1` mechanism is npm-only. On nuget.org, "latest" is always the highest stable SemVer. A backport release like `2.2.4` will never be served to a `dotnet add package` that resolves to `3.x` because `3.x > 2.x`. No extra config needed.
 
@@ -307,7 +307,7 @@ If parsing fails, the workflow still emits a changeset using just the PR title. 
 
 | Option                       | Value                                                          | Meaning                                               |
 | ---------------------------- | -------------------------------------------------------------- | ----------------------------------------------------- |
-| `changelog`                  | `["@changesets/changelog-github", { "repo": "neolution-ch/Neolution.Extensions.Caching" }]` | Changelogs include PR links and contributor credit    |
+| `changelog`                  | `["@changesets/changelog-github", { "repo": "collana-solutions/Neolution.Extensions.Caching" }]` | Changelogs include PR links and contributor credit    |
 | `commit`                     | `false`                                                        | `npx changeset` does not auto-commit                  |
 | `fixed`                      | All four library names in one inner array                      | The four packages always share a version              |
 | `access`                     | `public`                                                       | Marks intent (would only matter on an npm publish)    |
@@ -357,4 +357,4 @@ npx changeset pre exit
 - **What's been released** → GitHub Releases page + each `src/Neolution.Extensions.Caching.*/CHANGELOG.md`.
 - **What's queued to ship next** → `.changeset/*.md` files. `npx changeset status --verbose` summarises.
 - **Why a tag has the form `@neolution-ch/...@version`** → `changeset publish` creates the tags in this form and writes them to the `CHANGESETS_OUTPUT` file; changesets/action [reads that file](https://github.com/changesets/action/blob/main/src/run.ts).
-- **Canonical org-wide release flow doc** → [neolution-ch/changeset-test/docs/CHANGESETS.md](https://github.com/neolution-ch/changeset-test/blob/main/docs/CHANGESETS.md).
+- **Canonical org-wide release flow doc** → [collana-solutions/changeset-test/docs/CHANGESETS.md](https://github.com/collana-solutions/changeset-test/blob/main/docs/CHANGESETS.md).
