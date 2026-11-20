@@ -388,11 +388,11 @@ All cache implementations support the following expiration policies:
 
 ```
 Csag.Extensions.Caching/
-├── Csag.Extensions.Caching.Abstractions/   # Core interfaces and base classes
-├── Csag.Extensions.Caching.InMemory/       # In-memory implementation
-├── Csag.Extensions.Caching.Distributed/    # `IDistributedCache` wrapper
-├── Csag.Extensions.Caching.RedisHybrid/    # Redis hybrid cache
-└── Csag.Extensions.Caching.UnitTests/      # Unit tests
+├── Csag.Extensions.Caching.Abstractions/  # Core interfaces and base classes
+├── Csag.Extensions.Caching.InMemory/      # In-memory implementation
+├── Csag.Extensions.Caching.Distributed/   # `IDistributedCache` wrapper
+├── Csag.Extensions.Caching.RedisHybrid/   # Redis hybrid cache
+└── Csag.Extensions.Caching.UnitTests/     # Unit tests
 ```
 
 ### Key Abstractions
@@ -407,20 +407,29 @@ Csag.Extensions.Caching/
 
 ### Prerequisites
 
-- .NET 10.0 SDK — required to build the `net10.0` target (it also builds the `net8.0` one)
-- .NET 8.0 runtime — required to run the `net8.0` test leg
+- The .NET SDK pinned in [global.json](global.json) (10.0.4xx, a newer 10.0 SDK rolls forward). It builds the `net10.0` and the `net8.0` targets.
+- The .NET 8.0 runtime, to run the `net8.0` tests.
+- Node.js 24 with Corepack, for the changesets tooling: run `corepack enable` and then `pnpm install` once in the repository root.
 
 ### Build
 
 ```bash
-dotnet restore
-dotnet build --configuration Release
+dotnet restore --locked-mode
+dotnet build --configuration Release --no-restore
 ```
+
+Every project has a `packages.lock.json`, and CI restores in locked mode. After changing a package reference, run `dotnet restore` without `--locked-mode` and commit the updated lock files.
 
 ### Run Tests
 
 ```bash
-dotnet test
+dotnet test --configuration Release --no-build
+```
+
+### Pack
+
+```bash
+dotnet pack --configuration Release --no-build -o ./nupkgs
 ```
 
 ## Contributing
@@ -440,13 +449,50 @@ Contributions are welcome! Please follow these guidelines:
 4. Run `dotnet restore` to restore dependencies
 5. Build and run tests
 
+## Preview packages
+
+Each pull request to `main` or to a `release/**` branch publishes all four packages to a public preview feed on feedz.io. A draft PR, a PR from a fork and a PR from Dependabot publish no preview. The version is one patch above the current release, for example `4.0.1-pr.42.183` (PR 42, workflow run 183). The **"chore: version packages"** PR publishes a release candidate of the upcoming version instead, for example `4.1.0-pr.73.190`, so the changes of the next release can be tested before it ships. In prerelease mode the version in `package.json` is a prerelease such as `5.0.0-rc.0`, and the preview extends it, for example `5.0.0-rc.0.pr.42.183`. That version sorts after the prerelease and before the next one. A comment on the PR gives the version of its latest push. The feed removes previews after 30 days. Releases go to nuget.org only.
+
+To use a preview in an application, add the feed to the `nuget.config` of the application. The feed needs no credentials:
+
+```xml
+<packageSources>
+  <clear />
+  <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+  <add key="csag-extensions-caching-previews" value="https://f.feedz.io/collana-solutions/csag-extensions-caching/nuget/index.json" />
+</packageSources>
+<packageSourceMapping>
+  <packageSource key="nuget.org">
+    <package pattern="*" />
+    <package pattern="Csag.Extensions.Caching.*" />
+  </packageSource>
+  <packageSource key="csag-extensions-caching-previews">
+    <package pattern="Csag.Extensions.Caching.*" />
+  </packageSource>
+</packageSourceMapping>
+```
+
+The `Csag.Extensions.Caching.*` pattern is also necessary under nuget.org. NuGet looks for a package only in the sources of its most specific pattern, so without it the released versions do not restore.
+
+To test a preview:
+
+1. Set every `Csag.Extensions.Caching.*` package to the preview version.
+2. If the application restores in locked mode, update its `packages.lock.json` files.
+3. Add the feed only on the branch that tests the preview. The main branch of the application then does not need feedz.io to restore.
+
+## Release process
+
+This repository follows the [collana-solutions release playbook](https://github.com/collana-solutions/release-playbook) (Changesets, NuGet variant):
+
+1. Every PR that changes a package needs a changeset. Run `pnpm changeset`, pick the packages the change affects, choose the bump type and describe the change for consumers of the packages. The four packages are a fixed group, so they always share one version. A change that ships nothing, such as CI or repository documentation, needs an empty changeset: `pnpm changeset --empty`. CI's **Changeset Check** fails a PR without one.
+2. On merge to `main`, the Release workflow keeps a **"chore: version packages"** PR up to date. It bumps the versions in the `package.json` files, writes them into the `.csproj` files with `scripts/sync-versions.mjs` and updates the `CHANGELOG.md` files.
+3. Merging that PR creates the git tags and the GitHub Releases. The release of `Csag.Extensions.Caching.Abstractions` starts the **NuGet Publish** workflow, which packs all four packages and pushes them to nuget.org through trusted publishing.
+
+Dependabot PRs get their changesets automatically. Do not edit the `CHANGELOG.md` files or the `<Version>` in the `.csproj` files by hand.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Versioning
-
-This project uses [GitVersion](https://gitversion.net/) for semantic versioning with Continuous Delivery mode.
 
 ## Support
 

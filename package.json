@@ -1,14 +1,14 @@
 {
-  "name": "neolution.extensions.caching",
+  "name": "csag-extensions-caching",
   "private": true,
-  "workspaces": ["src/*"],
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
     "changeset": "changeset",
-    "version-packages": "node scripts/sync-versions.js",
+    "version-packages": "node scripts/sync-versions.mjs",
     "release": "changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^3.0.3",
-    "@changesets/changelog-github": "^1.0.1"
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3"
   }
 }
