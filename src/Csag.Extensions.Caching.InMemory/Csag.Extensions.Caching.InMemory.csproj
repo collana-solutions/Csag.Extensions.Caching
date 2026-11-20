@@ -4,7 +4,7 @@
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>3.0.0</Version>
+    <Version>4.0.0</Version>
     <Description>Strongly typed IMemoryCache&lt;TCacheId&gt; with enum cache identifiers, on top of Microsoft.Extensions.Caching.Memory, for single-instance applications.</Description>
     <PackageTags>cache caching enum strongly-typed memory in-memory</PackageTags>
   </PropertyGroup>
