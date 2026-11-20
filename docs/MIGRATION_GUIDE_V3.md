@@ -2,6 +2,8 @@
 
 Migration guide for **Neolution.Extensions.Caching v3.0**.
 
+> From 4.0.0 on, the packages are published as `Csag.Extensions.Caching.*`, with the namespaces renamed to match. To upgrade from 2.x to 4.x, follow this guide and then the migration note in the 4.0.0 entry of the [CHANGELOG](../src/Csag.Extensions.Caching.Abstractions/CHANGELOG.md).
+
 ## Breaking Changes
 
 ### Target Frameworks: .NET Standard 2.0 → .NET 8.0 and .NET 10.0

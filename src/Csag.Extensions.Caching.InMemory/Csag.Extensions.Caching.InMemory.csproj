@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>3.0.0</Version>
+    <Description>Strongly typed IMemoryCache&lt;TCacheId&gt; with enum cache identifiers, on top of Microsoft.Extensions.Caching.Memory, for single-instance applications.</Description>
+    <PackageTags>cache caching enum strongly-typed memory in-memory</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
+    <PackageReference Include="Neolution.CodeAnalysis" Version="3.2.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Csag.Extensions.Caching.Abstractions\Csag.Extensions.Caching.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

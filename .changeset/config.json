@@ -2,19 +2,19 @@
   "$schema": "https://unpkg.com/@changesets/config@4.0.0/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "collana-solutions/Neolution.Extensions.Caching" }
+    { "repo": "collana-solutions/Csag.Extensions.Caching" }
   ],
   "commit": false,
   "fixed": [
     [
-      "@neolution-ch/neolution.extensions.caching.abstractions",
-      "@neolution-ch/neolution.extensions.caching.distributed",
-      "@neolution-ch/neolution.extensions.caching.inmemory",
-      "@neolution-ch/neolution.extensions.caching.redishybrid"
+      "@collana-solutions/csag-extensions-caching-abstractions",
+      "@collana-solutions/csag-extensions-caching-distributed",
+      "@collana-solutions/csag-extensions-caching-inmemory",
+      "@collana-solutions/csag-extensions-caching-redishybrid"
     ]
   ],
   "linked": [],
-  "access": "public",
+  "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [],
