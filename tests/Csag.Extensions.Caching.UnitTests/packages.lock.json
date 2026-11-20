@@ -332,7 +332,7 @@
       "csag.extensions.caching.distributed": {
         "type": "Project",
         "dependencies": {
-          "Csag.Extensions.Caching.Abstractions": "[3.0.0, )",
+          "Csag.Extensions.Caching.Abstractions": "[4.0.0, )",
           "Foundatio.MessagePack": "[13.0.5, )",
           "Microsoft.Extensions.Caching.Abstractions": "[8.0.0, )",
           "Microsoft.Extensions.Options": "[8.0.2, )"
@@ -341,14 +341,14 @@
       "csag.extensions.caching.inmemory": {
         "type": "Project",
         "dependencies": {
-          "Csag.Extensions.Caching.Abstractions": "[3.0.0, )",
+          "Csag.Extensions.Caching.Abstractions": "[4.0.0, )",
           "Microsoft.Extensions.Caching.Memory": "[8.0.1, )"
         }
       },
       "csag.extensions.caching.redishybrid": {
         "type": "Project",
         "dependencies": {
-          "Csag.Extensions.Caching.Abstractions": "[3.0.0, )",
+          "Csag.Extensions.Caching.Abstractions": "[4.0.0, )",
           "Foundatio.MessagePack": "[13.0.5, )",
           "Foundatio.Redis": "[13.0.5, )",
           "Microsoft.Extensions.Options": "[8.0.2, )"
@@ -701,7 +701,7 @@
       "csag.extensions.caching.distributed": {
         "type": "Project",
         "dependencies": {
-          "Csag.Extensions.Caching.Abstractions": "[3.0.0, )",
+          "Csag.Extensions.Caching.Abstractions": "[4.0.0, )",
           "Foundatio.MessagePack": "[13.0.5, )",
           "Microsoft.Extensions.Caching.Abstractions": "[8.0.0, )",
           "Microsoft.Extensions.Options": "[8.0.2, )"
@@ -710,14 +710,14 @@
       "csag.extensions.caching.inmemory": {
         "type": "Project",
         "dependencies": {
-          "Csag.Extensions.Caching.Abstractions": "[3.0.0, )",
+          "Csag.Extensions.Caching.Abstractions": "[4.0.0, )",
           "Microsoft.Extensions.Caching.Memory": "[8.0.1, )"
         }
       },
       "csag.extensions.caching.redishybrid": {
         "type": "Project",
         "dependencies": {
-          "Csag.Extensions.Caching.Abstractions": "[3.0.0, )",
+          "Csag.Extensions.Caching.Abstractions": "[4.0.0, )",
           "Foundatio.MessagePack": "[13.0.5, )",
           "Foundatio.Redis": "[13.0.5, )",
           "Microsoft.Extensions.Options": "[8.0.2, )"
