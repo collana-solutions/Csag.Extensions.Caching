@@ -4,8 +4,8 @@
     <Authors>Neolution</Authors>
     <Company>Neolution AG</Company>
     <Copyright>Copyright © Neolution AG</Copyright>
-    <PackageProjectUrl>https://github.com/collana-solutions/Neolution.Extensions.Caching</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/collana-solutions/Neolution.Extensions.Caching</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/collana-solutions/Csag.Extensions.Caching</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/collana-solutions/Csag.Extensions.Caching</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>

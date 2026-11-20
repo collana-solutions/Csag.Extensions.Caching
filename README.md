@@ -20,13 +20,13 @@ A type-safe caching abstraction library for .NET that uses enum-based cache iden
 
 ```bash
 # For in-memory caching
-dotnet add package Neolution.Extensions.Caching.InMemory
+dotnet add package Csag.Extensions.Caching.InMemory
 
 # For serialized distributed caching (requires existing IDistributedCache provider)
-dotnet add package Neolution.Extensions.Caching.Distributed
+dotnet add package Csag.Extensions.Caching.Distributed
 
 # For Redis hybrid caching
-dotnet add package Neolution.Extensions.Caching.RedisHybrid
+dotnet add package Csag.Extensions.Caching.RedisHybrid
 ```
 
 ## Getting Started
@@ -267,7 +267,7 @@ _cache.Set(MyCacheId.Product, sku, productData);
 Since cache entries persist across application restarts and deployments, protect cache keys from breaking when refactoring enum names by using the `[CacheKey]` attribute:
 
 ```csharp
-using Neolution.Extensions.Caching.Abstractions;
+using Csag.Extensions.Caching.Abstractions;
 
 public enum MyCacheId
 {
@@ -387,12 +387,12 @@ All cache implementations support the following expiration policies:
 ### Project Structure
 
 ```
-Neolution.Extensions.Caching/
-├── Neolution.Extensions.Caching.Abstractions/   # Core interfaces and base classes
-├── Neolution.Extensions.Caching.InMemory/       # In-memory implementation
-├── Neolution.Extensions.Caching.Distributed/    # `IDistributedCache` wrapper
-├── Neolution.Extensions.Caching.RedisHybrid/    # Redis hybrid cache
-└── Neolution.Extensions.Caching.UnitTests/      # Unit tests
+Csag.Extensions.Caching/
+├── Csag.Extensions.Caching.Abstractions/   # Core interfaces and base classes
+├── Csag.Extensions.Caching.InMemory/       # In-memory implementation
+├── Csag.Extensions.Caching.Distributed/    # `IDistributedCache` wrapper
+├── Csag.Extensions.Caching.RedisHybrid/    # Redis hybrid cache
+└── Csag.Extensions.Caching.UnitTests/      # Unit tests
 ```
 
 ### Key Abstractions
@@ -435,7 +435,7 @@ Contributions are welcome! Please follow these guidelines:
 ### Development Setup
 
 1. Clone the repository
-2. Open `Neolution.Extensions.Caching.sln` in Visual Studio or your preferred IDE
+2. Open `Csag.Extensions.Caching.sln` in Visual Studio or your preferred IDE
 3. Install Redis locally for hybrid cache testing (optional)
 4. Run `dotnet restore` to restore dependencies
 5. Build and run tests
