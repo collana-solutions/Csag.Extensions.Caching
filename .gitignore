@@ -393,8 +393,8 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# Neolution rules
-# ===============
+# collana solutions rules
+# =======================
 
 # Ignore folders and files prefixed with more than one underscore
 __*
