@@ -1,6 +1,7 @@
 ﻿namespace Csag.Extensions.Caching.UnitTests
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
     using Csag.Extensions.Caching.Abstractions;
     using Csag.Extensions.Caching.UnitTests.Models;
@@ -84,6 +85,7 @@
         /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
         [Theory(Skip = "Refresh() is removed from interface (no strong use-case)")]
         [ClassData(typeof(ServiceCollectionTestDataCollection))]
+        [SuppressMessage("Major Code Smell", "S6966:Awaitable method should be used", Justification = "Covers the synchronous cache API like the other tests in this class. The method is async only for Task.Delay.")]
         public async Task RefreshedObjectDidNotExpire(IServiceCollection serviceCollection)
         {
             // Assign

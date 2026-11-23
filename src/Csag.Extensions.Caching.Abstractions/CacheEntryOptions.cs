@@ -1,6 +1,6 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-// Minor changes to formatting to match the Neolution.CodeAnalysis rules
+// Minor changes to formatting to match the Csag.CodeAnalysis rules
 namespace Csag.Extensions.Caching.Abstractions
 {
     using System;
